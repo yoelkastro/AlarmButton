@@ -33,6 +33,7 @@ void setup() {
 
     request->send(200, "text/plain", "OK");
   });
+  // TO-DO: Implement async alarm stopped for response not received
 
   server.begin();
 }
