@@ -8,16 +8,11 @@ const int ledPin =  12;
 
 AsyncWebServer server(80);
 
-void IRAM_ATTR handleInterrupt() {
-  digitalWrite(ledPin, !digitalRead(ledPin));
-}
-
 void setup() {
   Serial.begin(115200);
 
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
-  attachInterrupt(digitalPinToInterrupt(buttonPin), handleInterrupt, RISING);
 
   WiFi.begin(SSID, PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
@@ -30,10 +25,12 @@ void setup() {
   });
 
   server.on("/startAlarm", HTTP_GET, [] (AsyncWebServerRequest *request) {
-    request->send(200, "text/plain", "OK");
-  });
+    digitalWrite(ledPin, HIGH);
+    
+    while(!digitalRead(buttonPin));
+    
+    digitalWrite(ledPin, LOW);
 
-  server.on("/stopAlarm", HTTP_GET, [] (AsyncWebServerRequest *request) {
     request->send(200, "text/plain", "OK");
   });
 
