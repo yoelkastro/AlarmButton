@@ -9,9 +9,9 @@ const int ledPin =  12;
 AsyncWebServer server(80);
 
 void blinkLed() {
-  digitalWrite(buttonPin, HIGH);
+  digitalWrite(ledPin, HIGH);
   delay(100);
-  digitalWrite(buttonPin, LOW);
+  digitalWrite(ledPin, LOW);
   delay(50);
 }
 
