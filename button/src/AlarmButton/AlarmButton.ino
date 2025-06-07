@@ -3,7 +3,7 @@
 #include <ESPAsyncWebServer.h>
 #include <NetworkData.ino>
 
-const int buttonPin = 32;
+const int buttonPin = 16;
 const int ledPin =  12;
 
 AsyncWebServer server(80);
