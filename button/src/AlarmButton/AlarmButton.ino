@@ -8,16 +8,30 @@ const int ledPin =  12;
 
 AsyncWebServer server(80);
 
+void blinkLed() {
+  digitalWrite(buttonPin, HIGH);
+  delay(100);
+  digitalWrite(buttonPin, LOW);
+  delay(50);
+}
+
 void setup() {
   Serial.begin(115200);
 
   pinMode(ledPin, OUTPUT);
   pinMode(buttonPin, INPUT);
 
+  // Signal setup complete
+  blinkLed();
+
   WiFi.begin(SSID, PASSWORD);
   while (WiFi.status() != WL_CONNECTED) {
     delay(1000);
   }
+
+  // Signal Wifi connected
+  blinkLed();
+  blinkLed();
 
   // Server endpoint for handshake
   server.on("/", HTTP_GET, [] (AsyncWebServerRequest *request) {
