@@ -1,2 +1,2 @@
-#define SSID "YOUR_SSID_HERE"
-#define PASSWORD "YOUR_PASSWORD_HERE"
+#define SSID "YSK Wi-Fi"
+#define PASSWORD "Qazwsxedc1234!"
